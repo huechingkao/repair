@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<table>
+  <tr><td>報修時間</td><td> {{ content.publication_date }}</td></tr>  
+  <tr><td>報修主旨</td><td> {{ content.subject }}</td></tr>
+  <tr><td>報修內容</td><td> {{ content.description }}</td></tr>
+  <tr><td>報修人</td><td> {{ content.reporter }}</td></tr>
+  <tr><td>連絡電話</td><td> {{ content.phone }}</td></tr>
+</table>
+{% if content.picture %}
+<a href="/media/{{content.picture}}" target="_blank"><img src="/media/{{content.picture}}" width="300"></a>
+{% endif %}
+<hr>
+<table>
+  <tr><td>處理狀況</td><td> {{ content.get_status_display }}</td></tr>  
+  <tr><td>處理人</td><td> {{ content.handler }}</td></tr>
+  <tr><td>處理時間</td><td> {{ content.handle_date }}</td></tr>
+  <tr><td>處理說明</td><td> {{ content.comment }}</td></tr>  
+</table>  
+{% endblock %}

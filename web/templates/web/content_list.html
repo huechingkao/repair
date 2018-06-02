@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table>
+        <tr>
+          <th>報修日期</th>
+          <th>報修主旨</th>
+          <th>報修人</th>
+          {% if user.is_authenticated %}
+          <th>維修記錄</th>
+          {% endif %}
+        </tr>
+        {% for content in  content_list %}
+        <tr>
+          <td>{{content.publication_date}}</td>
+          <td><a href="/web/content/{{content.id}}">{{content.subject}}</a></td>
+          <td>{{content.reporter}}</td>
+          {% if user.is_authenticated %}
+          <td><a href="/web/content/{{content.id}}/update">填寫</a></td>
+          {% endif %}          
+        </tr>
+        {% endfor %}
+  </table>
+    {% load pagination %}
+    {% get_pagination %}
+{% endblock %}

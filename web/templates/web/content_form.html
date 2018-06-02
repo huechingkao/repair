@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+  <tr><td>報修時間</td><td> {{ content.publication_date }}</td></tr>  
+  <tr><td>報修主旨</td><td> {{ content.subject }}</td></tr>
+  <tr><td>報修內容</td><td> {{ content.description }}</td></tr>
+  <tr><td>報修人</td><td> {{ content.reporter }}</td></tr>
+  <tr><td>連絡電話</td><td> {{ content.phone }}</td></tr>
+</table>
+<hr>
+<form action="" method="post">
+   {% csrf_token %}
+   <table>
+     <tr><td>處理人：</td><td>{{ form.handler }}</td></tr>
+     <tr><td>處理說明：</td><td>{{ form.comment }}</td></tr>
+     <tr><td>處理狀況：</td><td>{{ form.status }}</td></tr>
+     <tr><td>處理時間：</td><td>{{ form.handle_date }}</td></tr>     
+   </table>
+   <input type="submit" value="送出" />
+</form>
+{% endblock %}
